@@ -182,10 +182,10 @@ func (ci connInfo) Connect(ctx context.Context) (sqldriver.Conn, error) {
 		if timeout <= 0 {
 			timeout = 10 * time.Second
 		}
-		c, err = client.ConnectWithContext(ctx, ci.addr, ci.user, ci.password, ci.db, timeout, configuredOptions...)
+		c, err = client.ConnectWithContext(ctx, ci.addr, ci.user, ci.password, ci.db, "", timeout, configuredOptions...)
 	} else {
 		// No more processing here. Let's only support url parameters with the newer style DSN
-		c, err = client.ConnectWithContext(ctx, ci.addr, ci.user, ci.password, ci.db, 10*time.Second)
+		c, err = client.ConnectWithContext(ctx, ci.addr, ci.user, ci.password, ci.db, "", 10*time.Second)
 	}
 	if err != nil {
 		return nil, err

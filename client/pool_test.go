@@ -27,7 +27,7 @@ func TestPoolSuite(t *testing.T) {
 
 func (s *poolTestSuite) TestPool_Close() {
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	pool, err := NewPoolWithOptions(addr, *testUser, *testPassword, "",
+	pool, err := NewPoolWithOptions(addr, *testUser, *testPassword, "", "",
 		WithPoolLimits(5, 10, 5),
 	)
 	require.NoError(s.T(), err)
@@ -49,7 +49,7 @@ func (s *poolTestSuite) TestPool_Close() {
 func (s *poolTestSuite) TestPool_WrongPassword() {
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
 
-	_, err := NewPoolWithOptions(addr, *testUser, "wrong-password", "",
+	_, err := NewPoolWithOptions(addr, *testUser, "wrong-password", "", "",
 		WithPoolLimits(5, 10, 5),
 		WithNewPoolPingTimeout(time.Second),
 	)
@@ -66,7 +66,7 @@ func (s *poolTestSuite) TestPool_WrongAddr() {
 
 	_ = l.Close()
 
-	_, err = NewPoolWithOptions(laddr.String(), *testUser, *testPassword, "",
+	_, err = NewPoolWithOptions(laddr.String(), *testUser, *testPassword, "", "",
 		WithPoolLimits(5, 10, 5),
 		WithNewPoolPingTimeout(time.Second),
 	)

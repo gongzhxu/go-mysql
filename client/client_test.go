@@ -31,7 +31,7 @@ func TestClientSuite(t *testing.T) {
 func (s *clientTestSuite) SetupSuite() {
 	var err error
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	s.c, err = Connect(addr, *testUser, *testPassword, "", func(conn *Conn) error {
+	s.c, err = Connect(addr, *testUser, *testPassword, "", "", func(conn *Conn) error {
 		// test the collation logic, but this is essentially a no-op since
 		// the collation set is the default value
 		return conn.SetCollation(mysql.DEFAULT_COLLATION_NAME)
@@ -91,7 +91,7 @@ func (s *clientTestSuite) TestConn_Ping() {
 
 func (s *clientTestSuite) TestConn_Compress() {
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	conn, err := Connect(addr, *testUser, *testPassword, "", func(conn *Conn) error {
+	conn, err := Connect(addr, *testUser, *testPassword, "", "", func(conn *Conn) error {
 		conn.SetCapability(mysql.CLIENT_COMPRESS)
 		return nil
 	})
@@ -143,7 +143,7 @@ func (s *clientTestSuite) TestConn_TLS_Verify() {
 	// Verify that the provided tls.Config is used when attempting to connect to mysql.
 	// An empty tls.Config will result in a connection error.
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	_, err := Connect(addr, *testUser, *testPassword, *testDB, func(c *Conn) error {
+	_, err := Connect(addr, *testUser, *testPassword, *testDB, "", func(c *Conn) error {
 		c.UseSSL(false)
 		return nil
 	})
@@ -155,7 +155,7 @@ func (s *clientTestSuite) TestConn_TLS_Verify() {
 func (s *clientTestSuite) TestConn_TLS_Skip_Verify() {
 	// An empty tls.Config will result in a connection error but we can configure to skip it.
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	_, err := Connect(addr, *testUser, *testPassword, *testDB, func(c *Conn) error {
+	_, err := Connect(addr, *testUser, *testPassword, *testDB, "", func(c *Conn) error {
 		c.UseSSL(true)
 		return nil
 	})
@@ -168,7 +168,7 @@ func (s *clientTestSuite) TestConn_TLS_Certificate() {
 	// "x509: certificate is valid for MySQL_Server_8.0.12_Auto_Generated_Server_Certificate, not not-a-valid-name"
 	tlsConfig := NewClientTLSConfig(test_keys.CaPem, test_keys.CertPem, test_keys.KeyPem, false, "not-a-valid-name")
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	_, err := Connect(addr, *testUser, *testPassword, *testDB, func(c *Conn) error {
+	_, err := Connect(addr, *testUser, *testPassword, *testDB, "", func(c *Conn) error {
 		c.SetTLSConfig(tlsConfig)
 		return nil
 	})
@@ -256,7 +256,7 @@ func (s *clientTestSuite) TestConn_SetCollationAfterConnect() {
 
 func (s *clientTestSuite) TestConn_SetCollation() {
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	_, err := Connect(addr, *testUser, *testPassword, "", func(conn *Conn) error {
+	_, err := Connect(addr, *testUser, *testPassword, "", "", func(conn *Conn) error {
 		// test the collation logic
 		return conn.SetCollation("invalid_collation")
 	})
@@ -535,7 +535,7 @@ func (s *clientTestSuite) TestLongPassword() {
 	require.NoError(s.T(), err)
 
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, s.port)
-	c, err := Connect(addr, "test_long_password", "12345678901234567890", "")
+	c, err := Connect(addr, "test_long_password", "12345678901234567890", "", "")
 	require.NoError(s.T(), err)
 	err = c.Close()
 	require.NoError(s.T(), err)

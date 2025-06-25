@@ -9,7 +9,7 @@ import (
 
 func Example() {
 	// Connect MySQL at 127.0.0.1:3306, with user root, an empty password and database test
-	conn, err := client.Connect("127.0.0.1:3306", "root", "", "test")
+	conn, err := client.Connect("127.0.0.1:3306", "root", "", "test", "")
 	// Or to use SSL/TLS connection if MySQL server supports TLS
 	// conn, err := client.Connect("127.0.0.1:3306", "root", "", "test", func(c *Conn) {c.UseSSL(true)})
 	// Or to set your own client-side certificates for identity verification for security

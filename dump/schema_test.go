@@ -28,7 +28,7 @@ func (s *schemaTestSuite) SetupSuite() {
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, *test_util.MysqlPort)
 
 	var err error
-	s.conn, err = client.Connect(addr, "root", "", "")
+	s.conn, err = client.Connect(addr, "root", "", "", "")
 	require.NoError(s.T(), err)
 
 	s.d, err = NewDumper(*execution, addr, "root", "")

@@ -509,7 +509,7 @@ func (c *Canal) connect(options ...client.Option) (*client.Conn, error) {
 	defer cancel()
 
 	return client.ConnectWithDialer(ctx, "", c.cfg.Addr,
-		c.cfg.User, c.cfg.Password, "", c.cfg.Dialer, options...)
+		c.cfg.User, c.cfg.Password, "", c.cfg.Charset, c.cfg.Dialer, options...)
 }
 
 // Execute a SQL

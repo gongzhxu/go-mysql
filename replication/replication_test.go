@@ -275,7 +275,7 @@ func (t *testSyncerSuite) setupTest(flavor string) {
 		t.c.Close()
 	}
 
-	t.c, err = client.Connect(fmt.Sprintf("%s:%d", *test_util.MysqlHost, port), "root", "", "")
+	t.c, err = client.Connect(fmt.Sprintf("%s:%d", *test_util.MysqlHost, port), "root", "", "", "")
 	if err != nil {
 		t.T().Skip(err.Error())
 	}

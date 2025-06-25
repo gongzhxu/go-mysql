@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/pingcap/errors"
-	"github.com/pingcap/tidb/pkg/parser/charset"
+	tidbcharset "github.com/pingcap/tidb/pkg/parser/charset"
 
 	"github.com/gongzhxu/go-mysql/mysql"
 	"github.com/gongzhxu/go-mysql/packet"
@@ -87,26 +87,26 @@ func getNetProto(addr string) string {
 
 // Connect to a MySQL server, addr can be ip:port, or a unix socket domain like /var/sock.
 // Accepts a series of configuration functions as a variadic argument.
-func Connect(addr, user, password, dbName string, options ...Option) (*Conn, error) {
-	return ConnectWithTimeout(addr, user, password, dbName, time.Second*10, options...)
+func Connect(addr, user, password, dbName, charset string, options ...Option) (*Conn, error) {
+	return ConnectWithTimeout(addr, user, password, dbName, charset, time.Second*10, options...)
 }
 
 // ConnectWithTimeout to a MySQL address using a timeout.
-func ConnectWithTimeout(addr, user, password, dbName string, timeout time.Duration, options ...Option) (*Conn, error) {
-	return ConnectWithContext(context.Background(), addr, user, password, dbName, time.Second*10, options...)
+func ConnectWithTimeout(addr, user, password, dbName, charset string, timeout time.Duration, options ...Option) (*Conn, error) {
+	return ConnectWithContext(context.Background(), addr, user, password, dbName, charset, timeout, options...)
 }
 
 // ConnectWithContext to a MySQL addr using the provided context.
-func ConnectWithContext(ctx context.Context, addr, user, password, dbName string, timeout time.Duration, options ...Option) (*Conn, error) {
+func ConnectWithContext(ctx context.Context, addr, user, password, dbName, charset string, timeout time.Duration, options ...Option) (*Conn, error) {
 	dialer := &net.Dialer{Timeout: timeout}
-	return ConnectWithDialer(ctx, "", addr, user, password, dbName, dialer.DialContext, options...)
+	return ConnectWithDialer(ctx, "", addr, user, password, dbName, charset, dialer.DialContext, options...)
 }
 
 // Dialer connects to the address on the named network using the provided context.
 type Dialer func(ctx context.Context, network, address string) (net.Conn, error)
 
 // ConnectWithDialer to a MySQL server using the given Dialer.
-func ConnectWithDialer(ctx context.Context, network, addr, user, password, dbName string, dialer Dialer, options ...Option) (*Conn, error) {
+func ConnectWithDialer(ctx context.Context, network, addr, user, password, dbName, charset string, dialer Dialer, options ...Option) (*Conn, error) {
 	c := new(Conn)
 
 	c.includeLine = -1
@@ -140,9 +140,12 @@ func ConnectWithDialer(ctx context.Context, network, addr, user, password, dbNam
 	c.password = password
 	c.db = dbName
 	c.proto = network
-
-	// use default charset here, utf-8
-	c.charset = mysql.DEFAULT_CHARSET
+	if len(charset) != 0 {
+		c.charset = charset
+	} else {
+		// use default charset here, utf-8
+		c.charset = mysql.DEFAULT_CHARSET
+	}
 
 	// Apply configuration functions.
 	for _, option := range options {
@@ -174,7 +177,7 @@ func ConnectWithDialer(ctx context.Context, network, addr, user, password, dbNam
 	// if a collation was set with a ID of > 255, then we need to call SET NAMES ...
 	// since the auth handshake response only support collations with 1-byte ids
 	if len(c.collation) != 0 {
-		collation, err := charset.GetCollationByName(c.collation)
+		collation, err := tidbcharset.GetCollationByName(c.collation)
 		if err != nil {
 			c.Close()
 			return nil, errors.Trace(fmt.Errorf("invalid collation name %s", c.collation))

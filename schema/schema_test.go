@@ -32,7 +32,7 @@ func (s *schemaTestSuite) SetupSuite() {
 	addr := fmt.Sprintf("%s:%s", *test_util.MysqlHost, *test_util.MysqlPort)
 
 	var err error
-	s.conn, err = client.Connect(addr, "root", *pwd, *schema)
+	s.conn, err = client.Connect(addr, "root", *pwd, *schema, "")
 	require.NoError(s.T(), err)
 
 	s.sqlDB, err = sql.Open("mysql", fmt.Sprintf("root:%s@%s", *pwd, addr))

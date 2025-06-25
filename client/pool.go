@@ -85,6 +85,7 @@ func NewPoolWithOptions(
 	user string,
 	password string,
 	dbName string,
+	charset string,
 	options ...PoolOption,
 ) (*Pool, error) {
 	po := getDefaultPoolOptions()
@@ -118,7 +119,7 @@ func NewPoolWithOptions(
 		idlePingTimeout:  Timestamp(math.Ceil(MaxIdleTimeoutWithoutPing.Seconds())),
 
 		connect: func() (*Conn, error) {
-			return Connect(addr, user, password, dbName, po.connOptions...)
+			return Connect(addr, user, password, dbName, charset, po.connOptions...)
 		},
 
 		readyConnection: make(chan Connection),
@@ -167,6 +168,7 @@ func NewPool(
 	user string,
 	password string,
 	dbName string,
+	charset string,
 	options ...Option,
 ) *Pool {
 	pool, err := NewPoolWithOptions(
@@ -174,6 +176,7 @@ func NewPool(
 		user,
 		password,
 		dbName,
+		charset,
 		WithLogger(logger),
 		WithPoolLimits(minAlive, maxAlive, maxIdle),
 		WithConnOptions(options...),
