@@ -4,9 +4,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/packet"
-	mockconn "github.com/go-mysql-org/go-mysql/test_util/conn"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/packet"
+	mockconn "github.com/gongzhxu/go-mysql/test_util/conn"
 	"github.com/stretchr/testify/require"
 )
 

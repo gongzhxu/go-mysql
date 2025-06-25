@@ -16,9 +16,9 @@ import (
 	"github.com/google/uuid"
 	"github.com/pingcap/errors"
 
-	"github.com/go-mysql-org/go-mysql/client"
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/client"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 var errSyncRunning = errors.New("Sync is running, must Close first")

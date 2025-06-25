@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/go-mysql-org/go-mysql/server"
+	"github.com/gongzhxu/go-mysql/server"
 )
 
 func main() {

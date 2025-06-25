@@ -14,10 +14,10 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/go-mysql-org/go-mysql/client"
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/test_util"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/client"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/test_util"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 var testOutputLogs = flag.Bool("out", false, "output binlog event")

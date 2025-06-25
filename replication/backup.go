@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/mysql"
 	"github.com/pingcap/errors"
 )
 

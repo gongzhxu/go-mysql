@@ -16,9 +16,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-mysql-org/go-mysql/client"
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/client"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/utils"
 	"github.com/pingcap/errors"
 )
 
@@ -210,7 +210,7 @@ func (ci connInfo) Connect(ctx context.Context) (sqldriver.Conn, error) {
 
 	// if retries are 'on' then return sqldriver.ErrBadConn which will trigger up to 3
 	// retries by the database/sql package. If retries are 'off' then we'll return
-	// the native go-mysql-org/go-mysql 'mysql.ErrBadConn' erorr which will prevent a retry.
+	// the native gongzhxu/go-mysql 'mysql.ErrBadConn' erorr which will prevent a retry.
 	// In this case the sqldriver.Validator interface is implemented and will return
 	// false for IsValid() signaling the connection is bad and should be discarded.
 	return &conn{

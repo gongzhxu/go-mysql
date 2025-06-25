@@ -7,8 +7,8 @@ import (
 	"math"
 	"runtime"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/utils"
 	"github.com/pingcap/errors"
 )
 

@@ -8,7 +8,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 
-	_ "github.com/go-mysql-org/go-mysql/test_util" // Will register common flags
+	_ "github.com/gongzhxu/go-mysql/test_util" // Will register common flags
 )
 
 func TestMysqlGTIDInterval(t *testing.T) {

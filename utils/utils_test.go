@@ -2,5 +2,5 @@ package utils
 
 // Will register common flags
 import (
-	_ "github.com/go-mysql-org/go-mysql/test_util"
+	_ "github.com/gongzhxu/go-mysql/test_util"
 )

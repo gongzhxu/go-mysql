@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/replication"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/replication"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 // Handler is what a server needs to implement the client-server protocol

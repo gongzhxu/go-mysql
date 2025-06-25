@@ -11,9 +11,9 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/pingcap/errors"
 
-	"github.com/go-mysql-org/go-mysql/client"
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/client"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 type DumpConfig struct {

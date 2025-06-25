@@ -15,9 +15,9 @@ import (
 	"github.com/pingcap/errors"
 	"github.com/pingcap/tidb/pkg/parser/charset"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/packet"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/packet"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 const defaultBufferSize = 65536 // 64kb
@@ -119,7 +119,7 @@ func ConnectWithDialer(ctx context.Context, network, addr, user, password, dbNam
 	}
 	if buildInfo, ok := debug.ReadBuildInfo(); ok {
 		for _, bi := range buildInfo.Deps {
-			if bi.Path == "github.com/go-mysql-org/go-mysql" {
+			if bi.Path == "github.com/gongzhxu/go-mysql" {
 				c.attributes["_client_version"] = bi.Version
 				break
 			}

@@ -18,9 +18,9 @@ import (
 	"github.com/pingcap/errors"
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-mysql-org/go-mysql/client"
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/server"
+	"github.com/gongzhxu/go-mysql/client"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/server"
 )
 
 var _ server.Handler = &mockHandler{}

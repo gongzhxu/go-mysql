@@ -12,7 +12,7 @@ import (
 
 	"github.com/pingcap/errors"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/mysql"
 )
 
 var (

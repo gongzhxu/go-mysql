@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/mysql"
 )
 
 // TestStartBackupEndInGivenTime tests the backup process completes within a given time.

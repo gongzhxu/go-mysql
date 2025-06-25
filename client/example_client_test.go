@@ -3,8 +3,8 @@ package client_test
 import (
 	"fmt"
 
-	"github.com/go-mysql-org/go-mysql/client"
-	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/client"
+	"github.com/gongzhxu/go-mysql/mysql"
 )
 
 func Example() {

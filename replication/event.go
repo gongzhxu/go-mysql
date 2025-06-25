@@ -11,8 +11,8 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/serialization"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/serialization"
 	"github.com/google/uuid"
 	"github.com/pingcap/errors"
 )

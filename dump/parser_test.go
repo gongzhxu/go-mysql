@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/mysql"
 	"github.com/stretchr/testify/require"
 )
 

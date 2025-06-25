@@ -5,8 +5,8 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/utils"
 	"github.com/goccy/go-json"
 	"github.com/pingcap/errors"
 )

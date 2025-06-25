@@ -7,8 +7,8 @@ import (
 	"github.com/pingcap/tidb/pkg/parser/charset"
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
-	"github.com/go-mysql-org/go-mysql/packet"
+	"github.com/gongzhxu/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/packet"
 )
 
 func TestConnGenAttributes(t *testing.T) {

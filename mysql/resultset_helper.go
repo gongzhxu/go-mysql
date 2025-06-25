@@ -9,7 +9,7 @@ import (
 
 	"github.com/pingcap/errors"
 
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 func FormatTextValue(value interface{}) ([]byte, error) {

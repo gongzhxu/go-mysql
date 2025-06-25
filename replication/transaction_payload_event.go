@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/gongzhxu/go-mysql/mysql"
 	"github.com/klauspost/compress/zstd"
 )
 

@@ -2,10 +2,10 @@
 
 A pure Go library to handle MySQL network protocol and replication as used by MySQL and MariaDB.
 
-![semver](https://img.shields.io/github/v/tag/go-mysql-org/go-mysql)
-![example workflow](https://github.com/go-mysql-org/go-mysql/actions/workflows/ci.yml/badge.svg)
-![gomod version](https://img.shields.io/github/go-mod/go-version/go-mysql-org/go-mysql/master)
-[![Go Reference](https://pkg.go.dev/badge/github.com/go-mysql-org/go-mysql.svg)](https://pkg.go.dev/github.com/go-mysql-org/go-mysql)
+![semver](https://img.shields.io/github/v/tag/gongzhxu/go-mysql)
+![example workflow](https://github.com/gongzhxu/go-mysql/actions/workflows/ci.yml/badge.svg)
+![gomod version](https://img.shields.io/github/go-mod/go-version/gongzhxu/go-mysql/master)
+[![Go Reference](https://pkg.go.dev/badge/github.com/gongzhxu/go-mysql.svg)](https://pkg.go.dev/github.com/gongzhxu/go-mysql)
 
 ## Platform Support
 
@@ -59,7 +59,7 @@ You can use it as a MySQL replica to sync binlog from master then do something, 
 
 ```go
 import (
-	"github.com/go-mysql-org/go-mysql/replication"
+	"github.com/gongzhxu/go-mysql/replication"
 	"os"
 )
 // Create a binlog syncer with a unique server id, the server id must be different from other MySQL's. 
@@ -147,7 +147,7 @@ A simple example:
 package main
 
 import (
-	"github.com/go-mysql-org/go-mysql/canal"
+	"github.com/gongzhxu/go-mysql/canal"
 )
 
 type MyEventHandler struct {
@@ -184,7 +184,7 @@ func main() {
 }
 ```
 
-You can see [go-mysql-elasticsearch](https://github.com/go-mysql-org/go-mysql-elasticsearch) for how to sync MySQL data into Elasticsearch.
+You can see [go-mysql-elasticsearch](https://github.com/gongzhxu/go-mysql-elasticsearch) for how to sync MySQL data into Elasticsearch.
 
 ## Client
 
@@ -224,7 +224,7 @@ err := conn.ExecuteSelectStreaming(`select id, name from table LIMIT 100500`, &r
 
 ```go
 import (
-    "github.com/go-mysql-org/go-mysql/client"
+    "github.com/gongzhxu/go-mysql/client"
 )
 
 pool := client.NewPool(log.Debugf, 100, 400, 5, "127.0.0.1:3306", `root`, ``, `test`)
@@ -252,7 +252,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/go-mysql-org/go-mysql/server"
+	"github.com/gongzhxu/go-mysql/server"
 )
 
 func main() {
@@ -313,7 +313,7 @@ package main
 import (
 	"database/sql"
 
-	_ "github.com/go-mysql-org/go-mysql/driver"
+	_ "github.com/gongzhxu/go-mysql/driver"
 )
 
 func main() {
@@ -414,7 +414,7 @@ Example of defining a custom option:
 import (
  "database/sql"
 
- "github.com/go-mysql-org/go-mysql/driver"
+ "github.com/gongzhxu/go-mysql/driver"
 )
 
 func main() {
@@ -434,13 +434,13 @@ func main() {
 
 ### Custom Driver Name
 
-A custom driver name can be set via build options: `-ldflags '-X "github.com/go-mysql-org/go-mysql/driver.driverName=gomysql"'`.
+A custom driver name can be set via build options: `-ldflags '-X "github.com/gongzhxu/go-mysql/driver.driverName=gomysql"'`.
 
 This can be useful when using [GORM](https://gorm.io/docs/connecting_to_the_database.html#Customize-Driver):
 
 ```go
 import (
-  _ "github.com/go-mysql-org/go-mysql/driver"
+  _ "github.com/gongzhxu/go-mysql/driver"
   "gorm.io/driver/mysql"
   "gorm.io/gorm"
 )
@@ -461,7 +461,7 @@ a custom NamedValueChecker can be implemented.
 import (
  "database/sql"
 
- "github.com/go-mysql-org/go-mysql/driver"
+ "github.com/gongzhxu/go-mysql/driver"
 )
 
 func main() {
@@ -498,16 +498,16 @@ For the old logging package `github.com/siddontang/go-log/log`, a converting pac
 ## How to migrate to this repo
 To change the used package in your repo it's enough to add this `replace` directive to your `go.mod`:
 ```
-replace github.com/siddontang/go-mysql => github.com/go-mysql-org/go-mysql v1.12.0
+replace github.com/siddontang/go-mysql => github.com/gongzhxu/go-mysql v1.12.0
 ```
 
 This can be done by running this command:
 ```
-go mod edit -replace=github.com/siddontang/go-mysql=github.com/go-mysql-org/go-mysql@v1.12.0
+go mod edit -replace=github.com/siddontang/go-mysql=github.com/gongzhxu/go-mysql@v1.12.0
 ```
 
 v1.12.0 - is the last tag in repo, feel free to choose what you want.
 
 ## Credits
 
-go-mysql was started by @siddontang and has many [contributors](https://github.com/go-mysql-org/go-mysql/graphs/contributors)
+go-mysql was started by @siddontang and has many [contributors](https://github.com/gongzhxu/go-mysql/graphs/contributors)

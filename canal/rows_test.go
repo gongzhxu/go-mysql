@@ -3,8 +3,8 @@ package canal
 import (
 	"testing"
 
-	"github.com/go-mysql-org/go-mysql/replication"
-	"github.com/go-mysql-org/go-mysql/schema"
+	"github.com/gongzhxu/go-mysql/replication"
+	"github.com/gongzhxu/go-mysql/schema"
 	"github.com/stretchr/testify/require"
 )
 

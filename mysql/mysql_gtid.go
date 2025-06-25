@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/utils"
 	"github.com/google/uuid"
 	"github.com/pingcap/errors"
 )

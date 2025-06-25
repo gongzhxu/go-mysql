@@ -9,7 +9,7 @@ import (
 	"encoding/pem"
 	"math/big"
 
-	"github.com/go-mysql-org/go-mysql/utils"
+	"github.com/gongzhxu/go-mysql/utils"
 )
 
 // NewServerTLSConfig: generate TLS config for server side
